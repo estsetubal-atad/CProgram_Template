@@ -11,13 +11,13 @@ Check **full example** below. This just explains the steps.
 
 You can *clone* this repository with:
 
-```bash
+```console
 $> git clone https://github.com/estsetubal-atad/CProgram_Template.git <program-dir-name>
 ```
 
 where `<program-dir-name>` is the new name of the directory that will be created containing the cloned code. You'll now need to open this directory in *VS Code* as your *working directory*. The easiest way is just to simply:
 
-```bash
+```console
 $> code <program-dir-name>
 ```
 
@@ -25,7 +25,7 @@ From *VS Code* you can open an *integrated terminal*: Menu **Terminal > New Term
 
 ### Full example
 
-```bash
+```console
 $> git clone https://github.com/estsetubal-atad/CProgram_Template.git MyOwnCProgram
 $> code MyOwnCProgram
 ```
@@ -34,13 +34,13 @@ $> code MyOwnCProgram
 
 Edit the `makefile` to comply with your source files and then, e.g.:
 
-```bash
+```console
 $> make
 ```
 
 If you didn't change the name of the *executable* (by default, `prog`), then:
 
-```bash
+```console
 $> ./prog
 ```
 
@@ -48,9 +48,16 @@ $> ./prog
 
 *Valgrind* is very useful to detect "memory leaks" if your program uses *dynamic memory allocation*. You must compile the program with *debug* symbols and then run the executable through `valgrind`:
 
-```bash
+```console
 $> make debug
 $> valgrind --leak-check=full ./prog 
+```
+
+Alternatively, you can use the *bash script* already included:
+
+```console
+$> make debug
+$> bash mem_check.sh
 ```
 
 **When the program exits** it will present you with memory leak information.
@@ -69,7 +76,7 @@ $> doxygen Doxyfile
 
 and you'll end up with a `html` folder containing the generated documentation.
 
-## Input Library
+## Input Module
 
 This template project includes the `input` module. You should use it for *user input* as it provides a relatively robust mechanism to read mixed data and performs validation.
 
