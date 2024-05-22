@@ -68,10 +68,10 @@ void readString(char *charArr, unsigned int maxChars) {
 }
 
 char** splitString(char *string, int nTokens, const char *delim) {
-    char **tokens = (char**) malloc(sizeof(char*) * nTokens);
-    int index = 0;
-    int len = strlen(string);
-
+	char **tokens = (char**) malloc(sizeof(char*) * nTokens);
+	int index = 0;
+	int len = strlen(string);
+	
 	// Discard newline, if present
 	if (string[len - 1] == '\n') {		
 		string[len - 1] = '\0';	
@@ -83,17 +83,17 @@ char** splitString(char *string, int nTokens, const char *delim) {
 		string[len - 1] = '\0';	
 		len--;
 	}	
-
+	
 	tokens[index++] = &string[0];
-    for(int i=0; i < len; i++) {
-        if( string[i] == delim[0] ) {
-            string[i] = '\0';
-            if( i < len - 1 ) {
-                tokens[index++] = &string[i] + 1;
-            }           
-        }
-    }
-    return tokens;
+	for(int i=0; i < len; i++) {
+		if( string[i] == delim[0] ) {
+			string[i] = '\0';
+			if( i < len - 1 ) {
+				tokens[index++] = &string[i] + 1;
+			}           
+		}
+	}
+	return tokens;
 }
 
 static bool validIntegerFormat(const char* s) {
