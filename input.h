@@ -56,20 +56,22 @@ bool readChar(char *ptVal);
 void readString(char *charArr, unsigned int maxChars);
 
 /**
- * @brief Splits a string given a delimiter.
+ * @brief Splits a string, given a delimiter.
  * 
  * This function modifies the parameter 'string', replacing
  * delimiter occurrences by '\0' and returns and array of pointers
  * to each invidual tokens.
  * 
- * This array must be free'd by the caller.
+ * The 'string' parameter must not be a 'const char'.
  * 
- * @param string [in] the string to split
+ * The returned array must be free'd by the caller.
+ * 
+ * @param string [in] the string to split, cannot be statically allocated!
  * @param nTokens [in] number of required tokens. If there are
  *                      less tokens than specified, then NULL
  *                      is used for subsequent tokens.
  * @param delim [in] delimiter, usually a single character
- * @return char** pointer array (of size nFields) to string "tokens".
+ * @return pointer array (of size nFields), where each position is a "string"
  */
 char** splitString(char *string, int nTokens, const char *delim);
 
