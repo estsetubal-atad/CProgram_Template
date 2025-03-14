@@ -1,4 +1,4 @@
-!#/bin/sh
+#!/bin/sh
 
 # You must compile the program beforehand with debug symbols:
 # $> make debug 
