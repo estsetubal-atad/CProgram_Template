@@ -1,86 +1,101 @@
 # C Program Template
 
-This is a C program *template* tailored for:
+Este é um *modelo* de programa em C adaptado para:
 
-- GCC, GDB, MAKE, VALGRING and DOXYGEN
-- VS CODE editor
+* GCC, GDB, MAKE, VALGRING e DOXYGEN
+* IDE VSCode
 
-## Cloning
+Ao utilizar este modelo, evita criar toda a estrutura de projeto de raiz e inclui desde já o módulo `input` para leitura de dados do utilizador.
 
-Check **full example** below. This just explains the steps.
+> [!IMPORTANT]
+> Todos os procedimentos abaixo descritos estão descritos na [página da UC no YouTube](https://www.youtube.com/@estsetubal-atad).
+> É importante que consulte os vídeos disponibilizados.
 
-You can *clone* this repository with:
+## Clonagem ou Download de ZIP
+
+> [!TIP]
+> Clique no botão verde `<> Code` na página deste repositório GitHub e encontrará a informação ou opção necessárias para os passos descritos em seguida.
+
+### Clonagem
+
+Se tiver o `git` instalado, pode optar pela *clonagem* do repositório. O endereço do repositório está disponível através do botão `<> Code`.
+
+Na consola, execute:
 
 ```console
 $> git clone https://github.com/estsetubal-atad/CProgram_Template.git <program-dir-name>
 ```
 
-where `<program-dir-name>` is the new name of the directory that will be created containing the cloned code. You'll now need to open this directory in *VS Code* as your *working directory*. The easiest way is just to simply:
+onde `<program-dir-name>` é o novo nome do diretório que será criado contendo o código clonado. De seguida, deverá abrir este diretório no *VS Code* como a sua *working directory*. A forma mais simples é simplesmente:
 
 ```console
 $> code <program-dir-name>
 ```
 
-From *VS Code* you can open an *integrated terminal*: Menu **Terminal > New Terminal**.
+A partir do *VS Code* pode abrir um *terminal integrado*: Menu **Terminal > New Terminal**.
 
-### Full example
+#### Exemplo completo
 
 ```console
 $> git clone https://github.com/estsetubal-atad/CProgram_Template.git MyOwnCProgram
 $> code MyOwnCProgram
 ```
 
-## Compiling and executing
+### Download de ZIP
 
-Edit the `makefile` to comply with your source files and then, e.g.:
+Utilizando a opção disponível através do botão `<> Code`, descarregue o *zip* para o seu computador e extraia o arquivo. Em seguida, clique com o botão direito sobre a pasta que contém os ficheiros fonte e escolha a opção "Abrir com Code".
+
+## Compilação e execução
+
+Edite o `makefile` sempre que adicionar novos módulos. Para compilar o programa, escreva no terminal:
 
 ```console
 $> make
 ```
 
-If you didn't change the name of the *executable* (by default, `prog`), then:
+Se não tiver alterado o nome do *executável* (por omissão, `prog`), então para executar o programa escreva no terminal:
 
 ```console
 $> ./prog
 ```
 
-## Using valgrind
+## Utilização do valgrind
 
-*Valgrind* is very useful to detect "memory leaks" if your program uses *dynamic memory allocation*. You must compile the program with *debug* symbols and then run the executable through `valgrind`:
+O *Valgrind* é muito útil para detetar "memory leaks" caso o seu programa utilize *alocação dinâmica de memória*. Deve compilar o programa com símbolos de *debug* e depois executar o programa através do `valgrind`:
 
 ```console
 $> make debug
 $> valgrind --leak-check=full ./prog 
 ```
 
-Alternatively, you can use the *bash script* already included:
+Em alternativa, pode utilizar o *script bash* já incluído no modelo:
 
 ```console
 $> make debug
 $> bash mem_check.sh
 ```
 
-**When the program exits** it will present you with memory leak information.
+**Quando o programa termina**, será apresentada informação sobre eventuais memory leaks.
 
-## Debugging
+## Depuração
 
-In the **Run** tab (left side) you should see a green play icon ▶️ at the top beside "gdb - Debug project". Click on it and the debug will start. Do not forget to set your *breakpoints*.
+No separador **Run** (lado esquerdo) deverá ver um ícone verde de execução ▶️ no topo junto a "gdb - Debug project". Clique nele para iniciar a depuração. Não se esqueça de definir os seus *breakpoints*.
 
-## Generating documentation
+## Geração de documentação
 
-You'll need `doxygen` installed and follow the doxygen documentation format. A `Doxyfile` is already provided that is suited for the C language. Use:
+Deverá ter o `doxygen` instalado e seguir o formato de documentação do doxygen. Já é fornecido um `Doxyfile` adequado à linguagem C. Utilize:
 
 ```bash
 $> doxygen Doxyfile
 ```
 
-and you'll end up with a `html` folder containing the generated documentation.
+e será criada uma pasta `html` contendo a documentação gerada.
 
-## Input Module
+## Módulo Input
 
-This template project includes the `input` module. You should use it for *user input* as it provides a relatively robust mechanism to read mixed data and performs validation.
+Este projeto modelo inclui o módulo `input`. Deve utilizá-lo para *entrada de dados do utilizador*, pois disponibiliza um mecanismo relativamente robusto para ler dados mistos e efetuar validação - em detrimento de `scanf`.
 
-Below is a sample program which exemplifies the usage of this library:
+Segue-se um programa de exemplo que demonstra a utilização deste módulo/biblioteca:
 
 ```cpp
 #include <stdio.h> 
@@ -125,7 +140,7 @@ int main() {
 }
 ```
 
-and an example *user interaction* session:
+e um exemplo de sessão de *interação com o utilizador*:
 
 ```markdown
 Integer Value? 12d
