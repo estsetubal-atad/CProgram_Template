@@ -83,27 +83,27 @@ This template project includes the `input` module. You should use it for *user i
 Below is a sample program which exemplifies the usage of this library:
 
 ```cpp
-#include <stdio.h>
+#include <stdio.h> 
 #include <stdlib.h>
-
+#include <string.h>
 #include "input.h"
 
 int main() {
-
+    
 	/* simple data formats with validation examples */
 	int value = 0;
 	do {
 		printf("Integer Value? ");
 	} while(!readInteger(&value)); /* loops while invalid */
 		
-	printf("Integer Value = %d \n", value);
+	printf("Integer Value [OK] = %d \n", value);
 
 	double value2 = 0;
 	do {
 		printf("Double Value? ");
 	} while(!readDouble(&value2)); /* loops while invalid */
 		
-	printf("Double Value = %lf \n", value2);
+	printf("Double Value [OK] = %lf \n", value2);
 
 	/* Strings are consumed as-is */
 	char text[100];
@@ -112,16 +112,16 @@ int main() {
 	printf("Text = %s \n", text);
 
 	/* Example of the spliting function; use with CSV files later */
-	char line[100] = "Bruno Silva;bruno.silva@estsetubal.ips.pt;;2020/21";
+	char line[100] = "Bruno Silva;bruno.silva@estsetubal.ips.pt;;2025/26";
 
 	char** tokens = splitString(line, 4, ";");
 	for(int i=0; i<4; i++) {
-		printf("Token[%d] = %s \n", i, tokens[i]);
+		printf("Token[%d] = %s \n", i, strlen(tokens[i]) > 0 ? tokens[i] : "(empty)");
 	}
 
 	free(tokens); 
 
-	return 0;
+	return EXIT_SUCCESS;
 }
 ```
 
@@ -131,14 +131,14 @@ and an example *user interaction* session:
 Integer Value? 12d
 Integer Value? - 3
 Integer Value? -3
-Integer Value = -3 
+Integer Value [OK] = -3 
 Double Value? 12.4.5
 Double Value? -3.14159
-Double Value = -3.141590 
+Double Value [OK] = -3.141590 
 Text? This some text and a number 7 
 Text = This some text and a number 7 
 Token[0] = Bruno Silva 
 Token[1] = bruno.silva@estsetubal.ips.pt 
-Token[2] =  
-Token[3] = 2020/21
+Token[2] = (empty)
+Token[3] = 2025/26
 ```
