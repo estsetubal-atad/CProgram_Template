@@ -11,7 +11,7 @@ Ao utilizar este modelo, evita criar toda a estrutura de projeto de raiz e inclu
 > Todos os procedimentos abaixo descritos estão descritos na [página da UC no YouTube](https://www.youtube.com/@estsetubal-atad).
 > É importante que consulte os vídeos disponibilizados.
 
-## Clonagem ou Download de ZIP
+## 📥 Clonagem ou Download de ZIP
 
 > [!TIP]
 > Clique no botão verde `<> Code` na página deste repositório GitHub e encontrará a informação ou opção necessárias para os passos descritos em seguida.
@@ -45,43 +45,72 @@ $> code MyOwnCProgram
 
 Utilizando a opção disponível através do botão `<> Code`, descarregue o *zip* para o seu computador e extraia o arquivo. Em seguida, clique com o botão direito sobre a pasta que contém os ficheiros fonte e escolha a opção "Abrir com Code".
 
-## Compilação e execução
+## 🛠 Uso Geral
 
-Edite o `makefile` sempre que adicionar novos módulos. Para compilar o programa, escreva no terminal:
+> [!IMPORTANT]
+> Edite o `makefile` sempre que adicionar novos módulos. 
+
+### ⚙️ Configuração
+
+#### Linux/WSL
+
+Se estiver num ambiente *Linux/WSL* não são necessárias nenhumas configurações adicionais.
+
+#### Windows
+
+Se estiver num ambiente *Windows*, assume-se que vai utilizar o compilador *MinGW`*. Para tal será necessário utilizar a extensão VS Code para configurar o ambiente de trabalho:
+
+- [MinGW C Configuration](https://marketplace.visualstudio.com/items?itemName=brunomnsilva.mingw-c-configuration). Siga as instruções no site.
+
+Para além desta extensão, edite o `makefile` e altere o valor da variável `ENV` para *"windows"*:
+
+```console
+ENV ?= windows
+```
+
+### ▶️ Compilação e execução
+
+Para compilar o programa, escreva no terminal:
 
 ```console
 $> make
 ```
 
-Se não tiver alterado o nome do *executável* (por omissão, `prog`), então para executar o programa escreva no terminal:
+Se não tiver alterado o nome do *executável* (por omissão, `prog`), então para executar o programa escreva no terminal (em Linux/WSL):
 
 ```console
 $> ./prog
 ```
 
-## Utilização do valgrind
-
-O *Valgrind* é muito útil para detetar "memory leaks" caso o seu programa utilize *alocação dinâmica de memória*. Deve compilar o programa com símbolos de *debug* e depois executar o programa através do `valgrind`:
+ou em Windows:
 
 ```console
-$> make debug
-$> valgrind --leak-check=full ./prog 
+$> .\prog.exe
 ```
 
-Em alternativa, pode utilizar o *script bash* já incluído no modelo:
+### 🐞 Depuração
+
+No separador **Run** (lado esquerdo) deverá ver um ícone verde de execução ▶️ no topo junto a "gdb - Debug project". Clique nele para iniciar a depuração. Não se esqueça de definir os seus *breakpoints*.
+
+### 🧠 Verificação de memória dinâmica
+
+O [*Valgrind*](https://github.com/estsetubal-atad/Docs/blob/master/Valgrind.md) e [*DrMemory*](https://drmemory.org/) são dois programas úteis para detetar "memory leaks" caso o seu programa utilize *alocação dinâmica de memória*. O programa deverá ser executado com símbolos de *debug* e executado o programa apropriado (*valgring* em Linux/WSL ou *drmemory* em Windows).
+
+O repositório contem dois *scripts* que executam estas duas ações. Basta, no terminal, executar (em Linux/WSL):
 
 ```console
-$> make debug
 $> bash mem_check.sh
+```
+
+ou em Windows:
+
+```console
+$> .\mem_check.bat
 ```
 
 **Quando o programa termina**, será apresentada informação sobre eventuais memory leaks.
 
-## Depuração
-
-No separador **Run** (lado esquerdo) deverá ver um ícone verde de execução ▶️ no topo junto a "gdb - Debug project". Clique nele para iniciar a depuração. Não se esqueça de definir os seus *breakpoints*.
-
-## Geração de documentação
+### 📚 Geração de documentação
 
 Deverá ter o `doxygen` instalado e seguir o formato de documentação do doxygen. Já é fornecido um `Doxyfile` adequado à linguagem C. Utilize:
 
@@ -91,7 +120,7 @@ $> doxygen Doxyfile
 
 e será criada uma pasta `html` contendo a documentação gerada.
 
-## Módulo Input
+### 💡 Módulo Input
 
 Este projeto modelo inclui o módulo `input`. Deve utilizá-lo para *entrada de dados do utilizador*, pois disponibiliza um mecanismo relativamente robusto para ler dados mistos e efetuar validação - em detrimento de `scanf`.
 
@@ -157,3 +186,5 @@ Token[1] = bruno.silva@estsetubal.ips.pt
 Token[2] = (empty)
 Token[3] = 2025/26
 ```
+---
+<bruno.silva@estsetubal.ips.pt>
