@@ -62,7 +62,7 @@ Se estiver num ambiente *Windows*, assume-se que vai utilizar o compilador *MinG
 
 - [MinGW C Configuration](https://marketplace.visualstudio.com/items?itemName=brunomnsilva.mingw-c-configuration). Siga as instruções no site.
 
-Para além desta extensão, edite um `makefile` e altere o valor da variável `ENV` para *"windows"*:
+Para além desta extensão, edite o `makefile` e altere o valor da variável `ENV` para *"windows"*:
 
 ```console
 ENV ?= windows
@@ -94,7 +94,7 @@ No separador **Run** (lado esquerdo) deverá ver um ícone verde de execução �
 
 ### 🧠 Verificação de memória dinâmica
 
-O *Valgrind* e *DrMemory* são dois programas úteis para detetar "memory leaks" caso o seu programa utilize *alocação dinâmica de memória*. O programa deverá ser executado com símbolos de *debug* e executado o programa apropriado (*valgring* em Linux/WSL ou *drmemory* em Windows).
+O [*Valgrind*](https://github.com/estsetubal-atad/Docs/blob/master/Valgrind.md) e [*DrMemory*](https://drmemory.org/) são dois programas úteis para detetar "memory leaks" caso o seu programa utilize *alocação dinâmica de memória*. O programa deverá ser executado com símbolos de *debug* e executado o programa apropriado (*valgring* em Linux/WSL ou *drmemory* em Windows).
 
 O repositório contem dois *scripts* que executam estas duas ações. Basta, no terminal, executar (em Linux/WSL):
 
@@ -186,3 +186,5 @@ Token[1] = bruno.silva@estsetubal.ips.pt
 Token[2] = (empty)
 Token[3] = 2025/26
 ```
+---
+<bruno.silva@estsetubal.ips.pt>
