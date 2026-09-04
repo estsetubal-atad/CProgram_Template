@@ -1,22 +1,39 @@
 {
 	"name": "docker-atad-container",
 	"image" : "brunomnsilva/docker-atad:latest",
+	
 	// Run privileged and remove container after stop.
-	"runArgs": ["--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined", "--privileged", "--rm"],
+	"runArgs": [
+		"--cap-add=SYS_PTRACE", 
+		"--security-opt", 
+		"seccomp=unconfined", 
+		"--privileged", 
+		"--rm"],
 
 	// Configure tool-specific properties.
 	"customizations": {
 		// Configure properties specific to VS Code.
 		"vscode": {
+			// Configure shell
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"terminal.integrated.profiles.linux": {
+					"bash": {
+						"path": "bash",
+						"icon": "terminal-bash"
+					}			  
+				}
+			},
 			// Add extensions to install when the container is created.
 			"extensions": [
 				"ms-vscode.cpptools",
-				"cschlosser.doxdocgen"
+				"cschlosser.doxdocgen",
+				"vscode-icons-team.vscode-icons"
 			]
 		}
 	},
 
-	// Run as root
-	"remoteUser": "root",
-        "shutdownAction": "stopContainer"
+	// Run as non-root
+	"remoteUser": "atad",
+    "shutdownAction": "stopContainer"
 }
